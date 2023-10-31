@@ -35,6 +35,15 @@ function silo_admin_menu(){
         'post_setting'
     );
 
+    add_submenu_page( 
+        'silo_general', 
+        'Data Schema', 
+        'Data Schema', 
+        'manage_options', 
+        'schema_setting_data', 
+        'schema_setting_data', 
+    );
+
     // Ads Setting
     add_submenu_page(
         'silo_general',
@@ -71,6 +80,7 @@ function silo_admin_menu(){
     function silo_admin_init(){
         require SILO_DIR . '/admin/handler/general.php';
         require SILO_DIR . '/admin/handler/single.php';
+        require SILO_DIR . '/admin/handler/schema.php';
         require SILO_DIR . '/admin/handler/ads.php';
         require SILO_DIR . '/admin/handler/header-footer.php';
     }
@@ -85,6 +95,10 @@ function silo_general(){
 
 function post_setting(){
     get_template_part( 'admin/panel/single', 'post' );
+}
+
+function schema_setting_data(){
+    get_template_part( 'admin/panel/data', 'schema' );
 }
 
 function silo_ads(){

@@ -20,9 +20,9 @@ require SILO_DIR . '/function/widgets.php';
 require SILO_DIR . '/mce_buttons/app.php';
 require SILO_DIR . '/function/remove-action.php';
 require SILO_DIR . '/function/dont-copy.php';
-require SILO_DIR . '/admin/handler/schema.php';
+require SILO_DIR . '/function/data-schema.php';
 
 // Add Custom Post Type Spek -------------------
 // ---------------------------------------------
-require SILO_DIR . '/spek/run.php';
-require SILO_DIR . '/spek/meta-box.php';
+// require SILO_DIR . '/spek/run.php';
+// require SILO_DIR . '/spek/meta-box.php';

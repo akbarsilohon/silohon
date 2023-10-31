@@ -178,7 +178,7 @@ if( !is_admin()){
         $atts[ 'data-src' ] = $atts[ 'src' ];
         $atts[ 'src' ] = SILO_URI . '/img/lazy.jpg';
 
-        if( !empty( $atts[ 'srcset' ] )){
+        if( isset( $atts[ 'srcset' ] )){
             unset( $atts[ 'srcset' ] );
         }
 

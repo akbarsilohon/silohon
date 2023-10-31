@@ -12,7 +12,7 @@
                     <a href="<?php the_permalink(); ?>" rel="bookmark" class="loop_link">
                         <?php 
                             if( has_post_thumbnail()){
-                                the_post_thumbnail( 'medium', array(
+                                the_post_thumbnail( 'full', array(
                                     'loading' => 'lazy'
                                 ));
                             }
