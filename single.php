@@ -1,5 +1,16 @@
 <?php get_header(); ?>
 
+<?php 
+
+    $myTopAds = get_option('ads_single_top');
+    if( !empty( $myTopAds ) ){
+        echo '<center>';
+        echo $myTopAds;
+        echo '</center>';
+    }
+
+?>
+
 <div class="container silo_single">
     <div class="silo_post">
         <article id="post-<?php the_ID(); ?>" class="silo_article" itemscope itemtype="https://schema.org/Article">
@@ -12,22 +23,21 @@
                 <?php the_title('<h1 class="single_title" itemprop="headline">', '</h1>'); ?>
                 <div class="post_meta">
                     <?php 
-                    $def_usr_img = SILO_URI . '/img/favicon.png';
-                    $name = get_userdata( $post->post_author );
-                    $atr = 'width="50" height="50" class="author_image"';
-                    $aut = get_site_icon_url();
+                        $author_id = get_the_author_meta('ID');
+                        $author_avatar = get_avatar($author_id, 100);
+                        $author_name = get_the_author_meta('display_name');
+                        preg_match('/src=["|\'](.*?)["|\']/', $author_avatar, $matches);
+                        $author_avatar_url = $matches[1];
+                        $author_bio = get_the_author_meta('description');
+                        $author_website = get_the_author_meta( 'user_url' );
+                        $atr = 'width="50" height="50" class="author_image"';
 
-                    if( has_site_icon() ){
-                        echo '<img '.$atr.' src="'.$aut.'" alt="'.$name->user_nicename.'" />';
-                    } else{
-                        echo '<img '.$atr.' src="'.$def_usr_img.'" alt="'.$name->user_nicename.'" />';
-                    }
+                        echo '<img '.$atr.' src="'.$author_avatar_url.'" alt="'.$author_name.'" />';
                     ?>
                     <div class="meta_right">
                         <span class="author_name">
                             <?php 
-                            $name = get_userdata( $post->post_author );
-                            echo 'Author: <a href="'.get_author_posts_url( $post->post_author ).'">'.$name->display_name.'</a>';
+                            echo 'Author: <a href="'.$author_website.'">'.$author_name.'</a>';
                             ?>
                         </span>
                         <span class="date_publish">Date: <?php the_time('F d, Y'); ?></span>
