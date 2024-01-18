@@ -1,4 +1,11 @@
 <?php
+/**
+ * Main function
+ * Silohon Wordpress Theme
+ * @package silohon
+ * @link https://github.com/akbarsilohon/silohon.git
+ */
+
 
 // ------------------------------------------
 // Function Routing -------------------------
@@ -26,3 +33,9 @@ require SILO_DIR . '/function/data-schema.php';
 // ---------------------------------------------
 // require SILO_DIR . '/spek/run.php';
 // require SILO_DIR . '/spek/meta-box.php';
+
+
+// Custom page for paid traffic ----------------
+// ---------------------------------------------
+require SILO_DIR . '/paid-ads/load.php';
+require SILO_DIR . '/paid-ads/functions/create-table.php';

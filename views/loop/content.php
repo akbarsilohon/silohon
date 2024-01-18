@@ -15,6 +15,8 @@
                                 the_post_thumbnail( 'full', array(
                                     'loading' => 'lazy'
                                 ));
+                            } else{
+                                echo '<img src="'. SILO_URI . '/img/lazy.jpg' .'" alt="' . get_the_title() . '" />';
                             }
                         ?>
                         <div class="loop_body">

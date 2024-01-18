@@ -76,8 +76,8 @@ function silo_scripts(){
 
     // Page Css -------------------------
     // ----------------------------------
-    $get_meta = get_post_custom( $post->ID );
     if( is_page() ){
+        $get_meta = get_post_custom( $post->ID );
         if( !empty( $get_meta['silo_builder_active'] )){
             wp_enqueue_style(
                 'page-builder-style',
