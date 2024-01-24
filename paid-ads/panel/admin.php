@@ -17,10 +17,44 @@ if( paid_checker_license() ){
     <div class="paid_container">
         <div class="paid_inner">
             <div class="paid_main">
-                <h1>Content</h1>
+                <div class="paid_header_main">
+                    <h1 class="paidH">
+                        <?php echo paid_name; ?>
+                        <span class="paid_span">
+                            <?php echo paid_version; ?>
+                        </span>
+                    </h1>
+                </div>
+
+                <?php 
+                    if( isset( $_GET['tb'] ) ){
+                        $tb = $_GET['tb'];
+                        switch( $tb ){
+                            case 'lp':
+                                get_template_part( 'paid-ads/panel/page/landing-page' );
+                                break;
+                            case 'link':
+                                get_template_part( 'paid-ads/panel/page/short-link' );
+                                break;
+                            case 'ads':
+                                get_template_part( 'paid-ads/panel/page/ads' );
+                                break;
+                            case 'hf':
+                                get_template_part( 'paid-ads/panel/page/header-footer' );
+                                break;
+                            case 'settings':
+                                get_template_part( 'paid-ads/panel/page/seting' );
+                                break;
+                        }
+                    } else{
+                        get_template_part( 'paid-ads/panel/page/root' );
+                    }
+                ?>
             </div>
+
+            <!-- Navigation -->
             <div class="paid_nav">
-                <header class="paid_nav">
+                <header class="paid_nav_h">
                     <?php 
                         if( is_user_logged_in() ){
                             $user_id = $user_id = get_current_user_id();
@@ -29,15 +63,37 @@ if( paid_checker_license() ){
                             $user_role = reset($user_data->roles); ?>
 
                             <img src="<?php echo esc_url($avatar_url); ?>" alt="<?php echo esc_html($user_data->user_login); ?>" class="sl_AuImg">
-                            <div class="sl_Auinfo">
-                                <p class="sl_Name"><?php echo esc_html($user_data->user_login); ?></p>
-                                <p class="sl_Em"><?php echo $user_role; ?></p>
-                            </div>
-
                             <?php
                         }
                     ?>
                 </header>
+
+                <div class="paid_menus">
+                    <a href="admin.php?page=sl_paid" class="paid_link <?php if( empty( $_GET['tb'] )) echo 'paid_link-active'; ?>">
+                        <span class="dashicons dashicons-dashboard"></span>
+                        dashbord
+                    </a>
+                    <a href="admin.php?page=sl_paid&tb=lp" class="paid_link <?php if( isset($_GET['tb']) && $_GET['tb'] == 'lp' ) echo 'paid_link-active'; ?>">
+                        <span class="dashicons dashicons-admin-page"></span>
+                        landing page
+                    </a>
+                    <a href="admin.php?page=sl_paid&tb=link" class="paid_link <?php if( isset($_GET['tb']) && $_GET['tb'] == 'link' ) echo 'paid_link-active'; ?>">
+                        <span class="dashicons dashicons-admin-links"></span>
+                        short link
+                    </a>
+                    <a href="admin.php?page=sl_paid&tb=ads" class="paid_link <?php if( isset($_GET['tb']) && $_GET['tb'] == 'ads' ) echo 'paid_link-active'; ?>">
+                        <span class="dashicons dashicons-money-alt"></span>
+                        ads
+                    </a>
+                    <a href="admin.php?page=sl_paid&tb=hf" class="paid_link <?php if( isset($_GET['tb']) && $_GET['tb'] == 'hf' ) echo 'paid_link-active'; ?>">
+                        <span class="dashicons dashicons-editor-code"></span>
+                        header & footer
+                    </a>
+                    <a href="admin.php?page=sl_paid&tb=settings" class="paid_link <?php if( isset($_GET['tb']) && $_GET['tb'] == 'settings' ) echo 'paid_link-active'; ?>">
+                        <span class="dashicons dashicons-admin-tools"></span>
+                        setings
+                    </a>
+                </div>
 
             </div>
         </div>

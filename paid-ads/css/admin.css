@@ -111,4 +111,148 @@
     position: fixed;
     right: 0;
     top: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.paid_nav_h{
+    margin-top: 3rem;
+    width: 100%;
+    text-align: center;
+}
+.sl_AuImg{
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.paid_menus{
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.paid_menus .paid_link{
+    text-decoration: none;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 5px 1rem;
+    transition: all .5s;
+}
+.paid_menus .dashicons{
+    margin-right: 10px;
+}
+.paid_menus .paid_link:hover{
+    color: #2271b1;
+    transition: all .5s;
+}
+.paid_menus .paid_link-active{
+    background-color: #2271b1;
+    margin-left: -1rem;
+}
+.paid_main{
+    width: calc(100% -210px);
+    box-sizing: border-box;
+}
+.paid_header_main{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Anton Regular';
+}
+.paid_header_main .paidH{
+    position: relative;
+    width: max-content;
+    letter-spacing: 2px;
+    color: #1d2327;
+}
+.paidH .paid_span{
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 12px;
+    color: #fff;
+    font-family: 'WorkSans';
+    background-color: #2271b1;
+    padding: 2px 4px;
+    border-radius: 5px;
+}
+
+/* Dahsboard */
+.paid_dash{
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+}
+.paid_card{
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    font-family: 'WorkSans';
+}
+.paid_card h1{
+    font-family: 'Anton Regular';
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #1d2327;
+    margin-bottom: 2rem;
+}
+.php_item{
+    list-style: none;
+}
+.php_item .php_list{
+    display: flex;
+    gap: 1rem;
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+.php_list .disk{
+    width: 200px;
+}
+.php_list .desk{
+    color: #2271b1;
+}
+.paid_card #paid_card{
+    width: 200px !important;
+    height: 200px !important;
+}
+.paidLic{
+    width: 100%;
+    box-sizing: border-box;
+}
+.paidLic label{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 18px;
+}
+.paidLic label span{
+    width: 200px;
+    font-weight: bold;
+}
+.paidLic label input{
+    border: none;
+    outline-color: transparent;
+    background-color: transparent;
+    border-bottom: 2px solid #2271b1;
+    width: 100%;
+}
+.paidLic label input:focus{
+    border: none;
+    outline-color: transparent;
+}
+
+/* Landing page */
+.slhidden{
+    display: none;
+}
+.slTabs.active{
+    background: #2271b1;
+    color: #fff;
+}
+.slPFrom{
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
 }

@@ -14,4 +14,12 @@ function paid_admin_enqueue_script(){
         fileatime( SILO_DIR . '/paid-ads/css/admin.css' ),
         'all'
     );
+
+    wp_enqueue_script( 
+        'paid-main-js', 
+        SILO_URI . '/paid-ads/js/main.js', 
+        array(), 
+        fileatime( SILO_DIR . '/paid-ads/js/main.js' ), 
+        true 
+    );
 }
