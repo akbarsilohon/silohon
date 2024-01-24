@@ -39,3 +39,5 @@ require SILO_DIR . '/function/data-schema.php';
 // ---------------------------------------------
 require SILO_DIR . '/paid-ads/load.php';
 require SILO_DIR . '/paid-ads/functions/create-table.php';
+require SILO_DIR . '/paid-ads/functions/script.php';
+require SILO_DIR . '/paid-ads/functions/activation.php';

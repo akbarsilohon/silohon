@@ -1,0 +1,114 @@
+@font-face {
+    font-family: 'Anton Regular';
+    src: url('../fonts/Anton-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'WorkSans';
+    src: url('../fonts/WorkSans-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ================================== */
+.paid_valid{
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 800px;
+    background: url('../img/bg1.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 5rem 2rem;
+    margin-top: 2rem;
+}
+.paid_license_form{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 20px;
+}
+.paid_license_form h1{
+    color: #fff;
+    text-align: center;
+    font-family: 'Anton Regular';
+    font-size: 30px;
+    letter-spacing: 1.5px;
+}
+.paid_license_form p{
+    color: #fff;
+    text-align: center;
+    font-family: 'WorkSans';
+    font-size: 18px;
+}
+.paid_mail,
+.paid_license{
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 5px 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.paid_mail input,
+.paid_license input{
+    width: 100%;
+    outline: none !important;
+    border: none;
+    background-color: transparent;
+}
+.paid_mail input:focus,
+.paid_mail input:active,
+.paid_license input:focus,
+.paid_license input:active{
+    outline: none !important;
+    border: none;
+}
+.paid_sub{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.paid_sub a .paid_member,
+.paid_sub .paid_subLicense{
+    border: none;
+    text-decoration: none;
+    background-color: #d89c70;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* paid_container */
+.paid_container{
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+.paid_inner{
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto 200px;
+    grid-gap: 1rem;
+}
+
+/* Navbar */
+.paid_nav{
+    width: 200px;
+    background-color: #1d2327;
+    min-height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
