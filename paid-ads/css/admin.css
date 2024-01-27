@@ -275,3 +275,66 @@
 .lpMenus .paid_btn.active{
     background-color: #2271b1;
 }
+.paidForm{
+    margin-top: 3rem;
+}
+.infoNotice{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1px 20px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.infoNotice.berhasil{
+    background-color: #22bb33;
+}
+.infoNotice.gagal{
+    background-color: rgb(202, 17, 17);
+}
+.infoNotice .thisNotice{
+    color: #fff;
+    font-family: 'WorkSans';
+    font-weight: bold;
+}
+.formTitle,
+.formShortDesc,
+.paid_thumb{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+.formTitle input{
+    font-family: 'WorkSans';
+    font-weight: bold;
+    width: 100%;
+    font-size: 18px;
+}
+.formShortDesc textarea{
+    width: 100%;
+    height: 150px;
+    font-family: 'WorkSans';
+    font-size: 16px;
+}
+.paid_thumb{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.paid_thumb input{
+    width: 200px;
+}
+.paid_thumb button,
+.paid_submit_content button{
+    border: none;
+    background-color: #2271b1;
+    color: #fff;
+    font-family: 'WorkSans';
+    padding: 7px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.paid_submit_content button{
+    margin-top: 3rem;
+}

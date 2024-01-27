@@ -42,7 +42,7 @@ if( !empty( $set_sql )){ ?>
     <!-- Content 1 -->
     <form action="admin.php?page=sl_paid&tb=lp" class="paidForm" method="post" id="paidForm1">
 
-        <?php if( isset( $contentNotice_1 )){
+        <?php if( isset($contentNotice_1) ){
             echo $contentNotice_1;
         } ?>
 

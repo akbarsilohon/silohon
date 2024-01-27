@@ -58,12 +58,18 @@ if(isset( $_POST[ 'paid_submit_art_1' ] )){
     global $wpdb;
     $kontenData = $wpdb->prefix . 'paid_content';
 
-    if( $wpdb->query(
-        $wpdb->prepare(
-            "UPDATE $kontenData SET title = '$title_post_1', `desc` = '$description_post_1', images = '$thumbnail_post_1', content = '$content_post_1' WHERE id = '1'"
-        )
-    )){
-        $contentNotice_1 = 'Update successfully';
+    if( $wpdb->query( $wpdb->prepare( "UPDATE $kontenData SET title = '$title_post_1', `desc` = '$description_post_1', images = '$thumbnail_post_1', content = '$content_post_1' WHERE id = '1'"))){
+        $contentNotice_1 = '
+            <div class="infoNotice berhasil">
+            <p class="thisNotice">Update successfully</p>
+            </div>
+        ';
+    } else{
+        $contentNotice_1 = '
+            <div class="infoNotice gagal">
+            <p class="thisNotice">Update Failed</p>
+            </div>
+        ';
     }
 }
 
@@ -84,7 +90,11 @@ if( isset( $_POST[ 'paid_submit_art_2' ])){
             "UPDATE $kontenData SET title2 = '$title_post_2', `desc2` = '$description_post_2', images2 = '$thumbnail_post_2', content2 = '$content_post_2' WHERE id = '1'"
         )
     )){
-        $notice_2 = 'Update successfully';
+        $notice_2 = '
+            <div class="infoNotice berhasil">
+            <p class="thisNotice">Update successfully</p>
+            </div>
+        ';
     }
 }
 
@@ -105,6 +115,10 @@ if( isset( $_POST[ 'paid_submit_art_3' ])){
             "UPDATE $kontenData SET title3 = '$title_post_3', `desc3` = '$description_post_3', images3 = '$thumbnail_post_3', content3 = '$content_post_3' WHERE id = '1'"
         )
     )){
-        $notice_3 = 'Update successfully';
+        $notice_3 = '
+            <div class="infoNotice berhasil">
+            <p class="thisNotice">Update successfully</p>
+            </div>
+        ';
     }
 }
