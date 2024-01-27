@@ -122,3 +122,74 @@ if( isset( $_POST[ 'paid_submit_art_3' ])){
         ';
     }
 }
+
+// Direct link handler ======================
+// ==========================================
+if( isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])){
+    $idToDelete = absint($_GET['id']);
+
+    global $wpdb;
+    $NewDirect = $wpdb->prefix . 'paid_direct';
+
+    $deletedRows = $wpdb->delete(
+        $NewDirect,
+        array('id' => $idToDelete),
+        array('%d')
+    );
+
+    if ($deletedRows) {
+        $infoUpdate = '
+            <div class="infoNotice berhasil">
+                <p class="thisNotice">Link deleted successfully!</p>
+            </div>
+        ';
+    } else {
+        $infoUpdate = '
+            <div class="infoNotice gagal">
+                <p class="thisNotice">Error deleting link. Please try again.</p>
+            </div>
+        ';
+    }
+} else if( isset( $_POST['submitDR'] ) && !empty( $_POST['slDL_new'] )){
+    $slNewLink = sanitize_text_field($_POST['slDL_new']);
+    $slNewLink = strtolower(str_replace(' ', '-', $slNewLink));
+    $slNewTar = esc_url_raw($_POST['slDL_tar']);
+
+    global $wpdb;
+    $NewDirect = $wpdb->prefix . 'paid_direct';
+
+    $existingLink = $wpdb->get_var(
+        $wpdb->prepare("SELECT direct_link FROM $NewDirect WHERE direct_link = %s", $slNewLink)
+    );
+
+    if( !$existingLink ){
+        $wpdb->insert(
+            $NewDirect,
+            array(
+                'direct_link' => $slNewLink,
+                'target_link' => $slNewTar
+            ),
+            array('%s', '%s')
+        );
+
+        if( $wpdb->insert_id ){
+            $infoUpdate = '
+                <div class="infoNotice berhasil">
+                    <p class="thisNotice">New direct link added successfully!</p>
+                </div>
+            ';
+        } else{
+            $infoUpdate = '
+                <div class="infoNotice gagal">
+                    <p class="thisNotice">Error adding new direct link. Please try again.</p>
+                </div>
+            ';
+        }
+    } else{
+        $infoUpdate = '
+                <div class="infoNotice gagal">
+                    <p class="thisNotice">URL already exists. Please choose a different one.</p>
+                </div>
+            ';
+    }
+}
