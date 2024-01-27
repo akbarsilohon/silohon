@@ -45,3 +45,66 @@ if( isset( $_POST[ 'paid_subLicense' ] ) ){
         }
     }
 }
+
+
+// Update Content 1 ====================================
+// =====================================================
+if(isset( $_POST[ 'paid_submit_art_1' ] )){
+    $title_post_1 = sanitize_text_field($_POST['paid_title_1']);
+    $description_post_1 = sanitize_text_field($_POST['paid_desc_1']);
+    $thumbnail_post_1 = esc_url_raw($_POST['paid_img_1']);
+    $content_post_1 = wp_kses_post($_POST['paid_content_1']);
+
+    global $wpdb;
+    $kontenData = $wpdb->prefix . 'paid_content';
+
+    if( $wpdb->query(
+        $wpdb->prepare(
+            "UPDATE $kontenData SET title = '$title_post_1', `desc` = '$description_post_1', images = '$thumbnail_post_1', content = '$content_post_1' WHERE id = '1'"
+        )
+    )){
+        $contentNotice_1 = 'Update successfully';
+    }
+}
+
+
+// Update content 2 ==========================
+// ===========================================
+if( isset( $_POST[ 'paid_submit_art_2' ])){
+    $title_post_2 = sanitize_text_field($_POST['paid_title_2']);
+    $description_post_2 = sanitize_text_field($_POST['paid_desc_2']);
+    $thumbnail_post_2 = esc_url_raw($_POST['paid_img_2']);
+    $content_post_2 = wp_kses_post($_POST['paid_content_2']);
+
+    global $wpdb;
+    $kontenData = $wpdb->prefix . 'paid_content';
+
+    if( $wpdb->query(
+        $wpdb->prepare(
+            "UPDATE $kontenData SET title2 = '$title_post_2', `desc2` = '$description_post_2', images2 = '$thumbnail_post_2', content2 = '$content_post_2' WHERE id = '1'"
+        )
+    )){
+        $notice_2 = 'Update successfully';
+    }
+}
+
+
+// Update content 3 ==========================
+// ===========================================
+if( isset( $_POST[ 'paid_submit_art_3' ])){
+    $title_post_3 = sanitize_text_field($_POST['paid_title_3']);
+    $description_post_3 = sanitize_text_field($_POST['paid_desc_3']);
+    $thumbnail_post_3 = esc_url_raw($_POST['paid_img_3']);
+    $content_post_3 = wp_kses_post($_POST['paid_content_3']);
+
+    global $wpdb;
+    $kontenData = $wpdb->prefix . 'paid_content';
+
+    if( $wpdb->query(
+        $wpdb->prepare(
+            "UPDATE $kontenData SET title3 = '$title_post_3', `desc3` = '$description_post_3', images3 = '$thumbnail_post_3', content3 = '$content_post_3' WHERE id = '1'"
+        )
+    )){
+        $notice_3 = 'Update successfully';
+    }
+}

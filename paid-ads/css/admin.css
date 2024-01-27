@@ -247,12 +247,31 @@
 .slhidden{
     display: none;
 }
-.slTabs.active{
-    background: #2271b1;
-    color: #fff;
-}
-.slPFrom{
+.paidmain_content{
     width: 100%;
     box-sizing: border-box;
-    display: block;
+}
+.lpHeader{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.lpHeader h1{
+    font-family: 'Anton Regular';
+    font-size: 18px;
+}
+.lpMenus .paid_btn{
+    border: none;
+    background-color: #1d2327;
+    color: #fff;
+    cursor: pointer;
+    margin-right: .5rem;
+    border-radius: 5px;
+    padding: 7px 20px;
+    font-family: 'WorkSans';
+    font-weight: bold;
+}
+.lpMenus .paid_btn.active{
+    background-color: #2271b1;
 }
