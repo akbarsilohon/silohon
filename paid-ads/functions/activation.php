@@ -230,3 +230,19 @@ if( isset( $_POST['paid_simpan_hedaer_footer'])){
                     </div>';
     }
 }
+
+// For settings ===========================
+// ========================================
+if( isset( $_POST['paid_simpan_settings'])){
+    $scrollDelay = $_POST['paid_scroll'];
+    $finishLink = $_POST['paid_finish_link'];
+
+    global $wpdb;
+    $NewData = $wpdb->prefix . 'paid_content';
+
+    if( $wpdb->query( $wpdb->prepare( "UPDATE $NewData SET scrollst = '$scrollDelay', finish_link = '$finishLink'" ))){
+        $infoUpdate = '<div class="infoNotice berhasil">
+        <p class="thisNotice">Update successfully!</p>
+    </div>';
+    }
+}
