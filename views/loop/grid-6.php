@@ -41,6 +41,8 @@ $i=0; ?>
                             'class' => 'grid_2_img',
                             'loading' => 'lazy'
                         ));
+                    } else{
+                        echo '<img src="' . SILO_URI . '/img/lazy.jpg' . '" data-src="' . SILO_URI . '/img/lazy.jpg' . '" class="grid_2_img" loading="lazy"/>';
                     }
                 ?>
                 <div class="grid_2_body">
@@ -64,6 +66,8 @@ $i=0; ?>
                             'class' => 'grid_4_img',
                             'loading' => 'lazy'
                         ));
+                    } else{
+                        echo '<img src="' . SILO_URI . '/img/lazy.jpg' . '" data-src="' . SILO_URI . '/img/lazy.jpg' . '" class="grid_4_img" loading="lazy"/>';
                     }
                 
                 ?>

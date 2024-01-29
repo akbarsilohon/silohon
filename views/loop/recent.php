@@ -50,6 +50,8 @@ if( !empty( $secs ) && is_array( $secs )){
                                         'class' => 'img_latest',
                                         'loading' => 'lazy'
                                     ));
+                                } else{
+                                    echo '<img src="' . SILO_URI . '/img/lazy.jpg' . '" data-src="' . SILO_URI . '/img/lazy.jpg' . '" class="img_latest" loading="lazy"/>';
                                 }
                             ?>
 

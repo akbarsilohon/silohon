@@ -134,9 +134,10 @@ ul.item_list{
     width: 52px;
     height: 23px;
     background: url('../image/checkbox.png') no-repeat;
+    background-position: bottom;
 }
 .grid_body label .disabled{
-    background-position: bottom;
+    background-position: top;
 }
 label .grid_checkbox input[type=checkbox]{
     opacity: 0;
@@ -171,6 +172,7 @@ a.del-cat{
     height: 23px;
     background: url('../image/checkbox.png') no-repeat;
     cursor: pointer;
+    background-position: top;
 }
 .last_sec input[type=checkbox]{
     width: 52px;
@@ -216,9 +218,10 @@ a.del-cat{
     width: 52px;
     height: 23px;
     background: url('../image/checkbox.png') no-repeat;
+    background-position: bottom;
 }
 .section_right label .disabled{
-    background-position: bottom;
+    background-position: top;
 }
 .section_right label input[type=checkbox]{
     width: 52px;
@@ -280,9 +283,10 @@ a.del-cat{
     width: 52px;
     height: 23px;
     background: url('../image/checkbox.png') no-repeat;
+    background-position: bottom;
 }
 .hero_right label .disabled{
-    background-position: bottom;
+    background-position: top;
 }
 .hero_right label input[type=checkbox]{
     width: 52px;

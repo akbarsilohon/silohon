@@ -42,6 +42,8 @@ $i=0; ?>
                                 'class' => 'grid_3A_img',
                                 'loading' => 'lazy'
                             ));
+                        } else{
+                            echo '<img src="' . SILO_URI . '/img/lazy.jpg' . '" data-src="' . SILO_URI . '/img/lazy.jpg' . '" class="grid_3A_img" loading="lazy" />';
                         }
                     ?>
 
@@ -66,6 +68,8 @@ $i=0; ?>
                                 'class' => 'grid_3B_img',
                                 'loading' => 'lazy'
                             ));
+                        } else{
+                            echo '<img src="' . SILO_URI . '/img/lazy.jpg' . '" data-src="' . SILO_URI . '/img/lazy.jpg' . '" class="grid_3B_img" loading="lazy"/>';
                         }
                     ?>
 
@@ -89,6 +93,8 @@ $i=0; ?>
                                 'class' => 'grid_3C_img',
                                 'loading' => 'lazy'
                             ));
+                        } else{
+                            echo '<img src="' . SILO_URI . '/img/lazy.jpg' . '" data-src="' . SILO_URI . '/img/lazy.jpg' . '" class="grid_3C_img" loading="lazy"/>';
                         }
                     ?>
 

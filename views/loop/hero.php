@@ -54,6 +54,8 @@ if( !empty( $hero ) && is_array( $hero )){
                                 'class' => 'hero_image',
                                 'loading' => 'eager'
                             ));
+                        } else{
+                            echo '<img src="' . SILO_URI . '/img/lazy.jpg' . '" data-src="' . SILO_URI . '/img/lazy.jpg' . '" class="hero_image" loading="eager"/>';
                         }
                     ?>
                     <div class="hero_body">
@@ -73,9 +75,11 @@ if( !empty( $hero ) && is_array( $hero )){
                     <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title(); ?>" class="hero_child_link">
                         <?php 
                             if( has_post_thumbnail()){
-                                the_post_thumbnail( 'medium', array(
+                                the_post_thumbnail( 'full', array(
                                     'loading' => 'lazy'
                                 ) );
+                            } else{
+                                echo '<img src="' . SILO_URI . '/img/lazy.jpg' . '" data-src="' . SILO_URI . '/img/lazy.jpg' . '" loading="lazy"/>';
                             }
                         ?>
 

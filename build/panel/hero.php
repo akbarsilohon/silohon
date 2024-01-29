@@ -14,8 +14,8 @@ if (isset($get_meta['silo_hero'][0])) {
     <div class="builder_item">
         <div class="section_top">
             <h3 class="top_title">Hero Post</h3>
-            <span id="hero_sec" class="hero_sec <?php if (isset($heros['active']) && empty($heros['active'])) echo 'hero_disabled'; ?>">
-                <input <?php if (isset($heros['active']) && !empty($heros['active'])) echo 'checked'; ?> type="checkbox" name="hero[active]" id="hero[active]" value="true">
+            <span id="hero_sec" class="hero_sec <?php echo (isset($heros['active']) && !empty($heros['active'])) ? '' : 'hero_disabled'; ?>">
+                <input <?php echo (isset($heros['active']) && !empty($heros['active'])) ? 'checked' : ''; ?> type="checkbox" name="hero[active]" id="hero[active]" value="true">
             </span>
         </div>
 
@@ -45,8 +45,8 @@ if (isset($get_meta['silo_hero'][0])) {
 
                 <label>
                     <span>Random: </span>
-                    <div id="hero_rand" class="hero_rand <?php if (isset($heros['order']) && $heros['order'] != 'rand') echo 'disabled'; ?>">
-                        <input <?php if (isset($heros['order']) && $heros['order'] == 'rand') echo 'checked'; ?> type="checkbox" name="hero[order]" id="hero[order]" value="rand">
+                    <div id="hero_rand" class="hero_rand <?php if (isset($heros['order'])) echo 'disabled'; ?>">
+                        <input <?php echo (isset($heros['order']) && $heros['order'] == 'rand') ? 'checked' : ''; ?> type="checkbox" name="hero[order]" id="hero[order]" value="rand">
                     </div>
                 </label>
             </div>

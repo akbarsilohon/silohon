@@ -14,8 +14,8 @@ if (isset($get_meta['silo_last'][0])) {
     <div class="builder_item">
         <div class="section_top">
             <h3 class="top_title">Last Section</h3>
-            <span id="last_sec" class="last_sec <?php if (isset($lasts['active']) && empty($lasts['active'])) echo 'last_disabled'; ?>">
-                <input <?php if (isset($lasts['active']) && !empty($lasts['active'])) echo 'checked'; ?> type="checkbox" name="last[active]" id="last[active]" value="true">
+            <span id="last_sec" class="last_sec <?php echo (isset($lasts['active']) && !empty($lasts['active'])) ? '' : 'last_disabled'; ?>">
+                <input <?php echo (isset($lasts['active']) && !empty($lasts['active'])) ? 'checked' : ''; ?> type="checkbox" name="last[active]" id="last[active]" value="true">
             </span>
         </div>
 
@@ -44,7 +44,7 @@ if (isset($get_meta['silo_last'][0])) {
 
                 <label>
                     <span>Random: </span>
-                    <div id="last_rand" class="last_rand <?php if (isset($lasts['order']) && $lasts['order'] != 'rand') echo 'disabled'; ?>">
+                    <div id="last_rand" class="last_rand <?php if (isset($lasts['order'])) echo 'disabled'; ?>">
                         <input <?php if (isset($lasts['order']) && $lasts['order'] == 'rand') echo 'checked'; ?> type="checkbox" name="last[order]" id="last[order]" value="rand">
                     </div>
                 </label>
