@@ -213,3 +213,20 @@ if( isset( $_POST['paid_simpan_ads'] )){
         ';
     }
 }
+
+
+// Header & Footer handler =================
+// =========================================
+if( isset( $_POST['paid_simpan_hedaer_footer'])){
+    $header_code = $_POST['paid_header'];
+    $footer_code = $_POST['paid_footer'];
+
+    global $wpdb;
+    $kontenData = $wpdb->prefix . 'paid_content';
+
+    if( $wpdb->query( $wpdb->prepare( "UPDATE $kontenData SET html_head = '$header_code', html_foot = '$footer_code'" ))){
+        $infoUpdate = '<div class="infoNotice berhasil">
+                        <p class="thisNotice">Update successfully!</p>
+                    </div>';
+    }
+}
