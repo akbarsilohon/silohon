@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'WorkSans Regular';
+    src: url('../fonts/WorkSans-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* main */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'WorkSans Regular';
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+img{
+    width: 0;
+    height: 0;
+}
+.container{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.breadcrumbs{
+    margin-top: 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background-color: #bfe7da;
+    box-sizing: border-box;
+    padding: .8rem;
+    font-size: 14px;
+}
+.breadcrumbs .brList .brA{
+    color: #30a1f8;
+    text-decoration: none;
+}
+.separator{
+    color: #999;
+}
+.brTitle{
+    color: #666;
+    font-weight: bold;
+}
+
+/* content */
+.slMianContent,
+.slArticle,
+.slHead{
+    width: 100%;
+    box-sizing: border-box;
+}
+.slHead{
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.slHeadline{
+    margin-bottom: 1rem;
+    font-size: 28px;
+    letter-spacing: -0.4px;
+    padding-bottom: 10px;
+}
+.slMDesc{
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    font-size: 17px;
+    color: #666;
+}
+.sl_innerADS{
+    margin: 10px 0;
+}
+.slBTNdw1{
+    background-color: #007634;
+    width: max-content;
+    margin: 10px auto;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.slBTNdw1 .slDwonload1{
+    display: none;
+    color: #fff;
+    text-decoration: none;
+}
+.slBTNdw1 .slCompress{
+    display: block;
+    color: #fff;
+}
+
+/* thumbnail */
+.slIMGa img.slThum{
+    width: 100%;
+    height: auto;
+}
+
+.slContent{
+    font-size: 18px;
+    line-height: 2rem;
+    color: #666;
+}
+.slContent p{
+    margin-bottom: 25px;
+    word-break: break-all;
+}
+.slContent h1,
+.slContent h2,
+.slContent h3,
+.slContent h4,
+.slContent h5,
+.slContent h6{
+    margin-bottom: 25px;
+    color: #444;
+}
+.slContent ul,
+.slContent ol{
+    margin-left: 25px;
+    margin-bottom: 25px;
+    word-break: break-all;
+}
+.slContent blockquote{
+    padding: 1rem;
+    font-style: italic;
+    background-color: #999;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+/* Page 2 */
+.slNewStep{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.slSVGItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #e62129;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 2rem;
+    line-height: 1.5rem;
+}
+.slSVGItem span{
+    float: left;
+    color: #007634;
+}
+.slSVGItem svg{
+    width: 60px;
+    margin-bottom: 1rem;
+}
+.slNewStep .slBTNAction{
+    display: none;
+    background-color: #007634;
+    width: max-content;
+    margin: 10px auto;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+@media(max-width:560px){
+    .breadcrumbs{
+        font-size: 13px;
+    }
+    .slBTNdw1{
+        font-size: 14px;
+    }
+    .slMDesc{
+        font-weight: normal;
+        font-size: 15px;
+    }
+    .slContent{
+        font-size: 16px;
+    }
+}

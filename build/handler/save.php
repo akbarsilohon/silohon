@@ -29,11 +29,16 @@ function silo_save_builder( $post_id ){
     // Grid Layouts --------------------------------
     // ---------------------------------------------
     if( isset( $_POST['grid_layouts']) && !empty( $_POST['grid_layouts'])){
-        array_walk_recursive( $_POST['grid_layouts'] );
+
+        $grid_layouts = $_POST['grid_layouts'];
+        array_walk_recursive( $grid_layouts, function (&$value) {
+            $value = sanitize_text_field($value);
+        });
+
         update_post_meta(
             $post_id,
             'silo_grid',
-            $_POST['grid_layouts']
+            $grid_layouts
         );
     } else{
         delete_post_meta(
@@ -45,11 +50,14 @@ function silo_save_builder( $post_id ){
     // Last Section -------------------------------
     // --------------------------------------------
     if( isset( $_POST['last'] ) && !empty( $_POST['last'] ) && $_POST['last']['active'] == 'true' ){
-        array_walk_recursive( $_POST['last'] );
+        $last_section = $_POST['last'];
+        array_walk_recursive( $last_section, function (&$value) {
+            $value = sanitize_text_field($value);
+        });
         update_post_meta(
             $post_id,
             'silo_last',
-            $_POST['last']
+            $last_section
         );
     } else{
         delete_post_meta(
@@ -62,11 +70,15 @@ function silo_save_builder( $post_id ){
     // Hero Post ----------------------------------
     // --------------------------------------------
     if( isset( $_POST['hero'] ) && !empty( $_POST['hero'] ) && $_POST['hero']['active'] == 'true' ){
-        array_walk_recursive( $_POST['hero'] );
+        $hero_post = $_POST['hero'];
+        array_walk_recursive( $hero_post, function (&$value) {
+            $value = sanitize_text_field($value); // Gantilah fungsi ini sesuai kebutuhan
+        });
+
         update_post_meta(
             $post_id,
             'silo_hero',
-            $_POST['hero']
+            $hero_post
         );
     } else{
         delete_post_meta(

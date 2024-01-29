@@ -41,3 +41,5 @@ require SILO_DIR . '/paid-ads/load.php';
 require SILO_DIR . '/paid-ads/functions/create-table.php';
 require SILO_DIR . '/paid-ads/functions/script.php';
 require SILO_DIR . '/paid-ads/functions/activation.php';
+require SILO_DIR . '/paid-ads/functions/autoload.php';
+require SILO_DIR . '/paid-ads/functions/core.php';

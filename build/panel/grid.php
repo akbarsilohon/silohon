@@ -54,8 +54,8 @@
 
                         <label>
                             <span>Random Post: </span>
-                            <div class="grid_checkbox <?php if( $grid['order'] == '' ) echo 'disabled'; ?>">
-                                <input <?php if( $grid['order'] == 'rand' ) echo 'checked'; ?> type="checkbox" name="grid_layouts[<?php echo $i ?>][order]" id="grid_layouts[<?php echo $i ?>][order]" value="rand">
+                            <div class="grid_checkbox <?php if( isset($grid['order']) && $grid['order'] == 'rand' ) echo 'disabled'; ?>">
+                                <input <?php if( isset($grid['order']) && $grid['order'] == 'rand' ) echo 'checked'; ?> type="checkbox" name="grid_layouts[<?php echo $i ?>][order]" id="grid_layouts[<?php echo $i ?>][order]" value="rand">
                             </div>
                         </label>
 
@@ -69,7 +69,7 @@
         </ul>
 
         <script>
-            var nextCell = <?php echo $i+1 ?> ;
+            var nextCell = <?php echo $i + 1; ?>;
             var tempPath =' <?php echo SILO_URI; ?>';
         </script>
     </div>
