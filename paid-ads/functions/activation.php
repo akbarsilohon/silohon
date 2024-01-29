@@ -193,3 +193,23 @@ if( isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])
             ';
     }
 }
+
+
+// Ads save handler ==========================
+// ===========================================
+if( isset( $_POST['paid_simpan_ads'] )){
+    $ads1 = $_POST['paid_ads1'];
+    $ads2 = $_POST['paid_ads2'];
+    $ads3 = $_POST['paid_ads3'];
+
+    global $wpdb;
+    $kontenData = $wpdb->prefix . 'paid_content';
+
+    if( $wpdb->query( $wpdb->prepare( "UPDATE $kontenData SET ads01 = '$ads1', ads02 = '$ads2', ads03 = '$ads3'" ))){
+        $infoUpdate = '
+            <div class="infoNotice berhasil">
+                <p class="thisNotice">Update successfully!</p>
+            </div>
+        ';
+    }
+}
