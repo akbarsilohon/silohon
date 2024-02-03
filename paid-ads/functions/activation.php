@@ -7,7 +7,7 @@
 
 
 define( 'paid_name', 'SILOHON PAID' );
-define( 'paid_version', '7.0.2' );
+define( 'paid_version', '7.2.1' );
 
 
 // License ===================================
@@ -20,6 +20,7 @@ if( isset( $_POST[ 'paid_subLicense' ] ) ){
         global $wpdb;
         $queryLicense = $wpdb->prefix . 'paid_license';
         $query_newTab = $wpdb->prefix . 'paid_content';
+        $query_bot_atble = $wpdb->prefix . 'paid_bot';
 
         $existing_license = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $queryLicense WHERE lisensi = %s", $lLic ) );
 
@@ -41,7 +42,12 @@ if( isset( $_POST[ 'paid_subLicense' ] ) ){
                 'slug_link' =>  'get'
             );
 
+            $inser_dataBot = array(
+                'id'        =>  '1',
+            );
+
             $wpdb->insert( $query_newTab, $insert_data_newTab );
+            $wpdb->insert( $query_bot_atble, $inser_dataBot );
         }
     }
 }
@@ -244,5 +250,26 @@ if( isset( $_POST['paid_simpan_settings'])){
         $infoUpdate = '<div class="infoNotice berhasil">
         <p class="thisNotice">Update successfully!</p>
     </div>';
+    }
+}
+
+
+// For Content Bot review =======================
+// ==============================================
+if( isset( $_POST[ 'bot_submit_article' ])){
+    $title_ = sanitize_text_field($_POST['bot_title']);
+    $description_ = sanitize_text_field($_POST['bot_desc']);
+    $thumbnail_ = esc_url_raw($_POST['bot_img']);
+    $content_ = wp_kses_post($_POST['bot_content_1']);
+
+    global $wpdb;
+    $kontenData = $wpdb->prefix . 'paid_bot';
+
+    if( $wpdb->query( $wpdb->prepare( "UPDATE $kontenData SET title = '$title_', `desc` = '$description_', images = '$thumbnail_', content = '$content_'" )) ){
+        $contentNotice_1 = '
+            <div class="infoNotice berhasil">
+                <p class="thisNotice">Update successfully!</p>
+            </div>
+        ';
     }
 }

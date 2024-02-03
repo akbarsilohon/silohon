@@ -50,6 +50,9 @@ jQuery( document ).ready( function( $ ){
             attachment = MediaContent_1.state().get('selection').first().toJSON();
             $( '#paid_img_1' ).val( attachment.url );
         });
+
+        MediaContent_1.open();
+
     });
 });
 
@@ -79,6 +82,9 @@ jQuery( document ).ready( function( $ ){
             attachment = MediaContent_2.state().get('selection').first().toJSON();
             $( '#paid_img_2' ).val( attachment.url );
         });
+
+        MediaContent_2.open();
+
     });
 });
 
@@ -108,5 +114,40 @@ jQuery( document ).ready( function( $ ){
             attachment = MediaContent_3.state().get('selection').first().toJSON();
             $( '#paid_img_3' ).val( attachment.url );
         });
+
+        MediaContent_3.open();
+
+    });
+});
+
+
+// Media Content Bot ======================
+// ========================================
+jQuery( document ).ready( function( $ ){
+    var MediaContent_4;
+
+    $( '#bot_change_img' ).on( 'click', function( e ){
+        e.preventDefault();
+
+        if( MediaContent_4 ){
+            MediaContent_4.open();
+            return;
+        }
+
+        MediaContent_4 = wp.media.frames = wp.media({
+            title: 'Choose a Thumnail',
+            button: {
+                text: 'Choose a Image'
+            },
+            multiple: false
+        });
+
+        MediaContent_4.on( 'select', function(){
+            attachment = MediaContent_4.state().get('selection').first().toJSON();
+            $( '#bot_img' ).val( attachment.url );
+        });
+
+        MediaContent_4.open();
+
     });
 });

@@ -33,6 +33,9 @@ if( paid_checker_license() ){
                             case 'lp':
                                 get_template_part( 'paid-ads/panel/page/landing-page' );
                                 break;
+                            case 'bot':
+                                get_template_part( 'paid-ads/panel/page/bot-content' );
+                                break;
                             case 'link':
                                 get_template_part( 'paid-ads/panel/page/short-link' );
                                 break;
@@ -76,6 +79,10 @@ if( paid_checker_license() ){
                     <a href="admin.php?page=sl_paid&tb=lp" class="paid_link <?php if( isset($_GET['tb']) && $_GET['tb'] == 'lp' ) echo 'paid_link-active'; ?>">
                         <span class="dashicons dashicons-admin-page"></span>
                         landing page
+                    </a>
+                    <a href="admin.php?page=sl_paid&tb=bot" class="paid_link <?php if( isset($_GET['tb']) && $_GET['tb'] == 'bot' ) echo 'paid_link-active'; ?>">
+                        <span class="dashicons dashicons-editor-customchar"></span>
+                        Content BOT
                     </a>
                     <a href="admin.php?page=sl_paid&tb=link" class="paid_link <?php if( isset($_GET['tb']) && $_GET['tb'] == 'link' ) echo 'paid_link-active'; ?>">
                         <span class="dashicons dashicons-admin-links"></span>

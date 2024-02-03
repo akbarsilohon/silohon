@@ -37,47 +37,45 @@ function paid_parse_request_to_server(){
     if( !empty( $slugz )){
 
         if( preg_match('/\/'.$slugz.'/', strtolower($_SERVER['REQUEST_URI'])) ){
-
-            $exp_dom = explode('/', $_SERVER['REQUEST_URI']);
-            $if_slug = trim(preg_replace('/[^a-zA-Z0-9-_].*/', '', $exp_dom[1]));
-
-            foreach( $wpdb->get_results("SELECT * FROM $DB_sql WHERE LOWER(direct_link) = LOWER('$if_slug')") as $key => $row){
-
-                if( empty($row->target_link) ){
-
-                    $getlinkz = $getlinkz;
-
-                } else{
-
-                    $getlinkz = $row->target_link;
-
-                }
-            }
-
-            if(!session_id()){
-                session_start();
-            }
-
-            $linkzpos = $getlinkz;
-            $_SESSION['sluglink'] = $if_slug;
-
-            if( preg_match('/^2$/', $_GET['tmp']) ){
-
-                $_SESSION['temp2'] = 'tmp2';
-
-            } elseif( preg_match('/^3$/', $_GET['tmp']) ){
-
-                $_SESSION['temp3'] = 'tmp3';
+            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            if( strpos( $userAgent, 'Googlebot') !== false ){
+                
+                get_template_part('paid-ads/templates/bot');
+                exit();
 
             } else{
+                $exp_dom = explode('/', $_SERVER['REQUEST_URI']);
+                $if_slug = trim(preg_replace('/[^a-zA-Z0-9-_].*/', '', $exp_dom[1]));
 
-                $_SESSION['temp1'] = 'tmp1';
+                foreach( $wpdb->get_results("SELECT * FROM $DB_sql WHERE LOWER(direct_link) = LOWER('$if_slug')") as $key => $row ){
+                    if( empty($row->target_link) ){
+                        $getlinkz = $getlinkz;
+                    } else{
+                        $getlinkz = $row->target_link;
+                    }
+                }
+
+                if( !session_id() ){
+                    session_start();
+                }
+
+                $linkzpos = $getlinkz;
+                $_SESSION['sluglink'] = $if_slug;
+
+                if( preg_match('/^2$/', $_GET['tmp']) ){
+                    $_SESSION['temp2'] = 'tmp2';
+                } elseif( preg_match('/^3$/', $_GET['tmp']) ){
+                    $_SESSION['temp3'] = 'tmp3';
+                } else{
+                    $_SESSION['temp1'] = 'tmp1';
+                }
+
+                $_SESSION['shortlinkz'] = $linkzpos;
+                header("Location: $linkzpos");
+                exit();
 
             }
 
-            $_SESSION['shortlinkz'] = $linkzpos;
-            header("Location: $linkzpos");
-            exit();
         }
     }
 }
