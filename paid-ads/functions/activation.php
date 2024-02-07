@@ -7,7 +7,7 @@
 
 
 define( 'paid_name', 'SILOHON PAID' );
-define( 'paid_version', '7.2.8' );
+define( 'paid_version', '7.3.1' );
 
 
 // License ===================================
