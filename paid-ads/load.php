@@ -33,7 +33,6 @@ function paid_switch_theme(){
     paid_license_table();
     paid_add_tabel_content();
     paid_direct_link();
-    paid_bot_content();
 }
 
 // Remove Table ==============================

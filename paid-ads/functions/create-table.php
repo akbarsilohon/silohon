@@ -86,27 +86,3 @@ function paid_direct_link(){
         dbDelta( $sql );
     }
 }
-
-
-// Table for Content Bot ==============================
-// ====================================================
-function paid_bot_content(){
-    global $wpdb;
-    $charset_collate = $wpdb->get_charset_collate();
-
-    $content_bot = $wpdb->prefix . 'paid_bot';
-
-    if( $wpdb->get_var( "SHOW TABLES LIKE '$content_bot';" ) != $content_bot ){
-        $sql = "CREATE TABLE $content_bot(
-            `id` int(11) NOT NULL AUTO_INCREMENT,
-            `title` text COLLATE utf8mb4_unicode_ci NOT NULL,
-            `desc` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-            `images` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-            `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-            PRIMARY KEY (`id`)
-        ) $charset_collate;";
-
-        require_once( ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
-    }
-}

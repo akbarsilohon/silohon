@@ -23,16 +23,14 @@
                 <?php the_title('<h1 class="single_title" itemprop="headline">', '</h1>'); ?>
                 <div class="post_meta">
                     <?php 
-                        $author_id = get_the_author_meta('ID');
-                        $author_avatar = get_avatar($author_id, 100);
-                        $author_name = get_the_author_meta('display_name');
-                        preg_match('/src=["|\'](.*?)["|\']/', $author_avatar, $matches);
-                        $author_avatar_url = $matches[1];
-                        $author_bio = get_the_author_meta('description');
-                        $author_website = get_the_author_meta( 'user_url' );
+                        $author_id = get_post_field('post_author', get_the_ID());
+                        $author_name = get_the_author_meta('display_name', $author_id);
+                        $author_website = get_the_author_meta('user_url', $author_id);
+                        $author_avatar_url = get_avatar_url($author_id, array('size' => 100));
+
                         $atr = 'width="50" height="50" class="author_image"';
 
-                        echo '<img '.$atr.' src="'.$author_avatar_url.'" alt="'.$author_name.'" />';
+                        echo '<img '.$atr.' src="' . esc_url($author_avatar_url) . '" alt="' . esc_attr($author_name) . '" />';
                     ?>
                     <div class="meta_right">
                         <span class="author_name">

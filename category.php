@@ -18,7 +18,11 @@ if( have_posts() ){ ?>
             <?php while( have_posts() ){
                 the_post(); ?>
                 <li class="___loop">
-                    <a href="<?php the_permalink(); ?>" rel="bookmark" class="loop_link">
+                    <?php
+                        $classPost = ( has_post_thumbnail() ? 'loop_link' : 'loop_no_thum');
+                        $classPostBody = ( has_post_thumbnail() ? 'loop_body' : 'loop_body_no_thum');
+                    ?>
+                    <a href="<?php the_permalink(); ?>" rel="bookmark" class="<?php echo $classPost; ?>">
                         <?php 
                             if( has_post_thumbnail()){
                                 the_post_thumbnail( 'medium', array(
@@ -27,7 +31,7 @@ if( have_posts() ){ ?>
                                 ));
                             }
                         ?>
-                        <div class="loop_body">
+                        <div class="<?php echo $classPostBody; ?>">
                             <span class="metas"><?php silo_cats(); ?></span>
                             <span class="metas">/</span>
                             <span class="metas"><?php the_time('F d, Y'); ?></span>

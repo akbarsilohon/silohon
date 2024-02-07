@@ -89,6 +89,7 @@ form.sil_search button {
 }
 
 .loop_link .loop_body,
+.loop_body_no_thum,
 .silo_sidebar {
     width: 100%;
     box-sizing: border-box
@@ -100,20 +101,23 @@ span.metas {
     font-size: 12px
 }
 
-.loop_body .post_title {
+.loop_body .post_title,
+.loop_body_no_thum .post_title {
     font-family: Oswald;
     font-size: 26px;
     margin: 8px 0;
     line-height: 30px
 }
 
-.loop_body p {
+.loop_body p,
+.loop_body_no_thum p {
     font-size: 16px;
     color: var(--bl2);
     line-height: 1.7rem
 }
 
-.loop_link:hover .loop_body .post_title {
+.loop_link:hover .loop_body .post_title,
+.loop_link:hover .loop_body_no_thum .post_title {
     color: var(--hover)
 }
 
@@ -186,6 +190,9 @@ form.sil_search button {
     grid-gap: 10px;
     margin-bottom: 10px
 }
+.silo_recent_widgets .recent_links_no_thum{
+    display: block;
+}
 
 .recent_links img {
     width: 90px;
@@ -193,6 +200,12 @@ form.sil_search button {
 }
 
 .recent_body .recent_title {
+    font-size: 16px;
+    font-family: Oswald;
+    line-height: 20px;
+    margin-top: 5px
+}
+.recent_body_no_thum .recent_title{
     font-size: 16px;
     font-family: Oswald;
     line-height: 20px;
@@ -230,7 +243,8 @@ form.sil_search button {
         height: 200px
     }
 
-    .___loop:first-child .loop_link .loop_body .post_title {
+    .___loop:first-child .loop_link .loop_body .post_title,
+    .___loop:first-child .loop_no_thum .loop_body_no_thum .post_title {
         font-size: 22px;
         line-height: 25px
     }
@@ -244,13 +258,17 @@ form.sil_search button {
         height: 90px
     }
 
-    .loop_body .post_title {
+    .loop_body .post_title,
+    .loop_body_no_thum .post_title{
         font-size: 16px;
         line-height: 20px
     }
 
     .loop_body p {
         display: none
+    }
+    .post_title p{
+        display: block;
     }
 
     .silo_paginate {
