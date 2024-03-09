@@ -31,15 +31,5 @@ require SILO_DIR . '/function/data-schema.php';
 
 // Add Custom Post Type Spek -------------------
 // ---------------------------------------------
-// require SILO_DIR . '/spek/run.php';
-// require SILO_DIR . '/spek/meta-box.php';
-
-
-// Custom page for paid traffic ----------------
-// ---------------------------------------------
-require SILO_DIR . '/paid-ads/load.php';
-require SILO_DIR . '/paid-ads/functions/create-table.php';
-require SILO_DIR . '/paid-ads/functions/script.php';
-require SILO_DIR . '/paid-ads/functions/activation.php';
-require SILO_DIR . '/paid-ads/functions/autoload.php';
-require SILO_DIR . '/paid-ads/functions/core.php';
+require SILO_DIR . '/spek/run.php';
+require SILO_DIR . '/spek/meta-box.php';
