@@ -238,224 +238,143 @@ function add_heading_id( $Content ){
 }
 
 
-// Ember Video ShortCode silohon Theme WOrdpress
-// =============================================
-add_shortcode( 'silo-embed', 'silo_add_embed' );
-function silo_add_embed( $atts ){
-    $args = shortcode_atts( 
-        array(
-            'judul' => '',
-            'url' => ''
-        ),
-        $atts,
-        'silo-embed'
-    );
-
-    $judulVideo = ( !empty( $args['judul'] ) ? $args['judul'] : 'Video Terkait' );
-    $urlVideo = ( !empty( $args['url'] ) ? $args['url'] : '' );
-
-    $VdOut = '<style>.silo_embed{width: 560px;height: 315px;position: relative;}.silo_embed img{width: 100%;height: 100%;object-fit: cover;object-position: center;}.VdEmbed .tombol-play{position: absolute;background-image: url("https://upload.wikimedia.org/wikipedia/commons/archive/0/09/20211015074810%21YouTube_full-color_icon_%282017%29.svg");background-size: cover;background-position: center;left: 50%;margin-left: -15px !important;top: 120px !important;cursor: pointer;width: 50px !important;height: 35px !important;z-index: 9999999999;}.silo_embed .tombol-play{position: absolute;background-image: url("https://upload.wikimedia.org/wikipedia/commons/archive/0/09/20211015074810%21YouTube_full-color_icon_%282017%29.svg");background-size: cover;background-position: center;left: 50%;margin-left: -35px;top: 50%;cursor: pointer;width: 70px;height: 50px;z-index: 9999999999;}.silo_embed iframe{width: 100%;height: 100%;}.silo_embed .silCls{font-size: 20px;color: #fff;background-color: #999;line-height: 8px;margin-bottom: 5px;padding: 5px;float: right;cursor: pointer;border-radius: 20px;}.VdEmbed{position: fixed !important;width: 336px !important;height: 190px !important;right: 20px;bottom: 100px;}@media(max-width: 580px){.silo_embed{width: 100%;height: 200px;}.VdEmbed{width: 50% !important;height: 100px !important;right: 0 !important;}.VdEmbed .tombol-play{top: 70px !important;width: 35px !important;height: 25px !important;}.silo_embed .tombol-play{top: 40%;width: 50px;height: 35px;}}</style>';
-    $VdOut .= '<div id="silo_embeded" video-id="' . $urlVideo . '" video-title="' . $judulVideo . '"></div>';
-    $VdOut .= '<script>
-        let isElementCreated = false;
-
-        function bElement() {
-            if (!isElementCreated) {
-                const sDiv = document.getElementById("silo_embeded");
-                const vUrl = sDiv.getAttribute("video-id");
-                const vJudul = sDiv.getAttribute("video-title");
-
-                const inDiv = document.createElement("div");
-                inDiv.classList.add("silo_embed", "VdEmbed");
-
-                const EVurl = document.createElement("span");
-                EVurl.className = "silCls";
-                EVurl.textContent = "\u00D7";
-                EVurl.addEventListener("click", function() {
-                    // Menghapus class "VdEmbed" dari elemen <div>
-                    inDiv.classList.remove("VdEmbed");
-                    // Menyembunyikan tombol close
-                    EVurl.style.display = "none";
-                });
-
-                const Imgs = document.createElement("img");
-                Imgs.src = "https://i.ytimg.com/vi_webp/" + vUrl + "/hqdefault.webp";
-                Imgs.title = vJudul;
-
-                const lplay = document.createElement("div");
-                lplay.classList.add("tombol-play");
-                lplay.addEventListener("click", function(){
-                    Imgs.style.display = "none";
-                    lplay.style.display = "none";
-                    inDiv.appendChild(EIFrem);
-                });
-
-                const EIFrem = document.createElement("iframe");
-                EIFrem.src = "https://www.youtube.com/embed/" + vUrl + "?autoplay=1&rel=0";
-                EIFrem.title = vJudul;
-                EIFrem.frameBorder = "0";
-                EIFrem.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                EIFrem.allowFullscreen = true;
-
-                inDiv.appendChild(EVurl);
-                inDiv.appendChild(Imgs);
-                inDiv.appendChild(lplay);
-
-                sDiv.appendChild(inDiv);
-
-                isElementCreated = true;
-            }
-        }
-
-        // Fungsi untuk Scroll
-        window.addEventListener("scroll", function () {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                bElement();
-            }
-        });
-    </script>';
-    $VdOut .= '<script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "VideoObject",
-            "name": "'. $judulVideo .'",
-            "description": "Silahkan tonton video '. $judulVideo .' agar lebih faham dan tau solusi '. get_the_title() .'",
-            "uploadDate": "' . get_the_date() . '",
-            "thumbnailUrl": "https://i.ytimg.com/vi_webp/'. $urlVideo .'/hqdefault.webp",
-            "contentUrl": "https://www.youtube.com/embed/' . $urlVideo . '",
-            "embedUrl": "https://www.youtube.com/embed/' . $urlVideo . '"
-        }
-    </script>';
-
-    return $VdOut;
-}
-
-
 // FAQ Help ShortCode Wordpress ================
 // =============================================
-add_shortcode('silo_faq', 'callback_silo_faq');
+add_shortcode( 'sl-faq', 'callback_sl_faqs' );
+function callback_sl_faqs( $atts, $content = null ){
+    $judul = $atts['judul'];
+    $tagp = !empty($atts['textfaq']) ? '<p>' . $atts['textfaq'] . '</p>' : '';
 
-function callback_silo_faq($atts, $content = null) {
-    // Find all occurrences of question and answer shortcodes and extract their content
-    preg_match_all('/\[faq_q\](.*?)\[\/faq_q\](?:\s*<p>|\s*<\/p>)/s', $content, $question_matches);
-    preg_match_all('/\[faq_a\](.*?)\[\/faq_a\](?:\s*<p>|\s*<\/p>)/s', $content, $answer_matches);
+    preg_match_all('/\[question\](.*?)\[\/question\](?:\s*<p>|\s*<\/p>)/s', $content, $question_matches);
+    preg_match_all('/\[answer\](.*?)\[\/answer\](?:\s*<p>|\s*<\/p>)/s', $content, $answer_matches);
 
-    // Initialize the HTML output
-    $html_output = '<div class="faq-container">';
+    $faqHtml = '<h2>' . $judul . '</h2>';
+    $faqHtml .= $tagp;
 
-    $html_output .= '<h2 class="silo_faq">FAQ</h2>';
-    // Loop through the matches and build FAQ items
-    for ($i = 0; $i < count($question_matches[1]); $i++) {
+    $faqHtml .= '<style>.sl_newFaqs{margin-bottom:1rem}.sl_newFaqs .faqHeader{font-family:Oswald;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:20px 0;border-top:1px solid var(--hover);border-bottom:1px solid var(--hover);margin-bottom:25px;font-size:20px;transition:.5s}.faqHeader span{word-wrap:break-word;line-height:25px}.faqHeader #faqToggle{background-color:var(--hover);color:#fff;padding:5px 10px;font-weight:700;cursor:pointer}.sl_newFaqs .jawabFaq{display:none;transition:.5s}</style>';
+
+    $faqHtml .= '<div class="sl_newFaqs">';
+
+    for( $i = 0; $i < count($question_matches[1]); $i++ ){
         $question = trim($question_matches[1][$i]);
         $answer = trim($answer_matches[1][$i]);
 
-        $html_output .= '<style>
-        .faq-item {
-            margin-bottom: 10px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .faq-question-toggle {
-            box-sizing: border-box;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 10px;
-            padding-bottom: 0px !important;
-            background-color: #f7f7f7;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
-            margin-bottom: 5px;
-        }
-        .faq-question-toggle p{
-            font-weight: bold;
-            display: block;
-        }
-        
-        .faq-question-toggle.active {
-            background-color: #ffffff;
-        }
-        
-        .faq-answer {
-            display: none;
-            padding: 10px;
-        }
-        
-        .faq-question-toggle.active + .faq-answer {
-            display: block;
-            margin-top: -1px;
-            padding-top: 0;
-        }
-        
-        .faq-svg_open {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            fill: #666666;
-            transition: transform 0.3s;
-        }
-        
-        .faq-question-toggle.active .faq-svg_open {
-            transform: rotate(180deg);
-        }
-        
-        .faq-svg_open {
-            transform-origin: center;
-        }
-        </style>';
-
-        $html_output .= '<div class="faq-item">';
-        $html_output .= '<div class="faq-question-toggle">';
-        $html_output .= '<p>' . esc_html( $question ) . '</p>';
-        $html_output .= '<div class="faq-open-close">';
-        $html_output .= '<span class="faq-svg_open"><svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#000"/>
-        </svg></span>';
-        $html_output .= '</div>';
-        $html_output .= '</div>';
-        $html_output .= '<p class="faq-answer">' . $answer . '</p>';
-        $html_output .= '</div>';
+        $faqHtml .= '<div class="faqHeader">';
+        $faqHtml .= '<span class"faqPertanyaan">' . esc_html( $question ) . '</span><span id="faqToggle">+</span>';
+        $faqHtml .= '</div>';
+        $faqHtml .= '<p class="jawabFaq">'. $answer .'</p>';
     }
 
-    // Close the HTML output
-    $html_output .= '</div>';
+    $faqHtml .= '</div>';
 
-    // JSON-LD data
+    // Json Faqs
     $json_ld = array(
         "@context" => "https://schema.org",
         "@type" => "FAQPage",
         "mainEntity" => array()
     );
 
-    for ($i = 0; $i < count($question_matches[1]); $i++) {
-        $question = trim($question_matches[1][$i]);
-        $answer = trim($answer_matches[1][$i]);
+    for( $i = 0; $i < count($question_matches[1]); $i++ ){
+        $question = trim(strip_tags($question_matches[1][$i]));
+        $answer = trim(strip_tags($answer_matches[1][$i]));
 
         $json_ld["mainEntity"][] = array(
             "@type" => "Question",
-            "name" => $question,
+            "name" => esc_html( $question ),
             "acceptedAnswer" => array(
                 "@type" => "Answer",
-                "text" => $answer
+                "text" => esc_html( $answer )
             )
         );
     }
 
     $json_ld_string = json_encode($json_ld, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-    $html_output .= '<script type="application/ld+json">' . $json_ld_string . '</script>';
+    $faqHtml .= '<script type="application/ld+json">' . $json_ld_string . '</script>';
 
-    $html_output .= '<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var toggles = document.querySelectorAll(".faq-question-toggle");
+    // Script toggle Faqs
+    $faqHtml .= '<script>
+        document.addEventListener( "click", function( event ){
+            var toggleButton = event.target;
         
-        toggles.forEach(function(toggle) {
-            toggle.addEventListener("click", function() {
-                this.classList.toggle("active");
-            });
+            if( toggleButton.id === "faqToggle" ){
+                var answer = toggleButton.parentNode.nextElementSibling;
+                if( answer.style.display === "block" ){
+                    answer.style.display = "none";
+                    toggleButton.textContent = "+";
+                } else{
+                    answer.style.display = "block";
+                    toggleButton.textContent = "-";
+                }
+            }
         });
-    });
     </script>';
 
-    return $html_output;
+    return $faqHtml;
 }
-?>
+
+// Youtube embed shortcode =====================
+// =============================================
+add_shortcode( 'sl-yt', 'callback_sl_yt' );
+function callback_sl_yt( $atts ){
+    $judulVideo = !empty( $atts['judul'] ) ? $atts['judul'] : get_the_title();
+    $videID = $atts['videoid'];
+
+    // Jika video ID tidak kosong
+    if( !empty($videID)){
+
+        $shortCodeYt = '<div style="width: 100%;height: 100%;box-shadow: 6px 6px 10px rgba(0, 0, 0, .3);margin-bottom: 25px;">';
+        $shortCodeYt .= '<div style="position: relative;padding-bottom: 56.15%;height: 0;overflow: hidden;">';
+        $shortCodeYt .= '<iframe
+                    style="position: absolute;top: 0;left: 0;width: 100%;height: 100%; border: 0;"
+                    loading="lazy"
+                    srcdoc="<style>
+                        *{padding:0;margin:0;overflow:hidden}body,html{height:100%}img{position:absolute;width:100%;height:auto;top:0;bottom:0;margin:auto}svg{filter:drop-shadow(1px 1px 6px hsl(206.5, 70.7%, 8%));transition:250ms ease-in-out}body:hover svg{filter:drop-shadow(1px 1px 6px hsl(206.5, 0%, 10%););transform:scale(1.1)}svg {
+                            position: absolute;
+                            width: 50px;
+                            height: auto;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    </style>
+                    <a href=\'https://www.youtube.com/embed/'. $videID .'?autoplay=1\'>
+                        <img src=\'https://i.ytimg.com/vi/'. $videID .'/sddefault.jpg\' alt=\''. $judulVideo .'\'>
+                        <svg width=\'64px\' height=\'64px\' viewBox=\'0 -3 20 20\' version=\'1.1\' xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' fill=\'#e74b2c\'>
+                            <g id=\'SVGRepo_bgCarrier\' stroke-width=\'0\'></g>
+                            <g id=\'SVGRepo_tracerCarrier\' stroke-linecap=\'round\' stroke-linejoin=\'round\'></g>
+                            <g id=\'SVGRepo_iconCarrier\'>
+                                <title>youtube [#e74b2c]</title>
+                                <desc>Created with Sketch.</desc>
+                                <defs> </defs>
+                                <g id=\'Page-1\' stroke=\'none\' stroke-width=\'1\' fill=\'none\' fill-rule=\'evenodd\'> <g id=\'Dribbble-Light-Preview\' transform=\'translate(-300.000000, -7442.000000)\' fill=\'#fff\'>
+                                    <g id=\'icons\' transform=\'translate(56.000000, 160.000000)\'>
+                                        <path d=\'M251.988432,7291.58588 L251.988432,7285.97425 C253.980638,7286.91168 255.523602,7287.8172 257.348463,7288.79353 C255.843351,7289.62824 253.980638,7290.56468 251.988432,7291.58588 M263.090998,7283.18289 C262.747343,7282.73013 262.161634,7282.37809 261.538073,7282.26141 C259.705243,7281.91336 248.270974,7281.91237 246.439141,7282.26141 C245.939097,7282.35515 245.493839,7282.58153 245.111335,7282.93357 C243.49964,7284.42947 244.004664,7292.45151 244.393145,7293.75096 C244.556505,7294.31342 244.767679,7294.71931 245.033639,7294.98558 C245.376298,7295.33761 245.845463,7295.57995 246.384355,7295.68865 C247.893451,7296.0008 255.668037,7296.17532 261.506198,7295.73552 C262.044094,7295.64178 262.520231,7295.39147 262.895762,7295.02447 C264.385932,7293.53455 264.28433,7285.06174 263.090998,7283.18289\' id=\'youtube-[#e74b2c]\'></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                        </svg>
+                    </a>
+                    ">
+                </iframe>';
+        $shortCodeYt .= '</div>';
+        $shortCodeYt .= '</div>';
+
+        $shortCodeYt .= '<script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "VideoObject",
+                "name": "'. $judulVideo .'",
+                "description": "Silahkan tonton video tentang '. $judulVideo .'",
+                "uploadDate": "' . get_the_date() . '",
+                "thumbnailUrl": "https://i.ytimg.com/vi_webp/'. $videID .'/hqdefault.webp",
+                "contentUrl": "https://www.youtube.com/embed/' . $videID . '",
+                "embedUrl": "https://www.youtube.com/embed/' . $videID . '"
+            }
+        </script>';
+
+        return $shortCodeYt;
+    } else{
+        return '';
+    }
+}

@@ -7,8 +7,7 @@
             menu: [
                 {   // Add Menu Button ------------
                     //-----------------------------
-                    text: '  BUTTON',
-                    icon: 'icon buton_mce',
+                    text: 'BUTTON',
                     onclick: function(){
                         editor.windowManager.open({
                             title: 'Add Button ShortCode',
@@ -57,129 +56,10 @@
                     }
                 }, // End Add Menu Button
 
-
-                {
-                    // Add Menu Product ---------------
-                    // --------------------------------
-                    text: '  RELATED POST',
-                    icon: 'icon related_mce',
-                    onclick: function(){
-                        editor.windowManager.open({
-                            title: 'Add Related Post',
-                            body: [
-                                {
-                                    type: 'textbox',
-                                    name: 'RelatedTitle',
-                                    label: 'Title',
-                                    minWidth: 350,
-                                    value: ''
-                                },
-                                {
-                                    type: 'textbox',
-                                    name: 'RelatedLink',
-                                    label: 'Url',
-                                    value: 'https://'
-                                },
-                                {
-                                    type: 'textbox',
-                                    name: 'RelatedImg',
-                                    label: 'Img Url',
-                                    value: ''
-                                },
-                                {
-                                    type: 'checkbox',
-                                    name: 'RelatedTarget',
-                                    label: 'Open In New Tab',
-                                    value: 'true'
-                                }
-                            ],
-                            onsubmit: function( e ){
-                                var RelatedTitle = e.data.RelatedTitle;
-                                var RelatedLink = e.data.RelatedLink;
-                                var RelatedImg = e.data.RelatedImg;
-                                var RelatedTarget = e.data.RelatedTarget;
-                                var RelatedBlnk = ( RelatedTarget == true ? '_blank' : '' );
-
-                                editor.insertContent('[silo-related target="'+RelatedBlnk+'" title="'+RelatedTitle+'" url="'+RelatedLink+'" gambar="'+RelatedImg+'"]');
-                            }
-                        });
-                    }
-                }, // End menu Product
-
-                {
-                    // Add ShortCode Product ----------
-                    // --------------------------------
-                    text: '  PRODUCT',
-                    icon: 'icon product_mce',
-                    onclick: function(){
-                        editor.windowManager.open({
-                            title: 'Add ShortCode Product',
-                            body: [
-                                {
-                                    type: 'listbox',
-                                    name: 'ProducToko',
-                                    label: 'Market Place',
-                                    minWidth: 350,
-                                    values: [
-                                        { text: 'Toko Pedia', value: 'tokopedia.jpg' },
-                                        { text: 'Shopee', value: 'shopee.jpg' },
-                                        { text: 'BliBli', value: 'blibli.jpg' },
-                                        { text: 'Buka Lapak', value: 'bukalapak.jpg' },
-                                        { text: 'Lazada', value: 'lazada.jpg' },
-                                        { text: 'I Style', value: 'istyle.png' },
-                                        { text: 'Aku Laku', value: 'akulaku.png' }
-                                    ]
-                                },
-                                {
-                                    type: 'textbox',
-                                    name: 'ProducTitle',
-                                    label: 'Product Name',
-                                    value: ''
-                                },
-                                {
-                                    type: 'textbox',
-                                    name: 'ProducOngkir',
-                                    label: 'Ongkir',
-                                    value: 'Rp. '
-                                },
-                                {
-                                    type: 'textbox',
-                                    name: 'ProducHarga',
-                                    label: 'Price',
-                                    value: 'Rp. '
-                                },
-                                {
-                                    type: 'textbox',
-                                    name: 'ProducLokasi',
-                                    label: 'Location',
-                                    value: 'Dalam Negeri'
-                                },
-                                {
-                                    type: 'textbox',
-                                    name: 'ProducLink',
-                                    label: 'Url',
-                                    value: 'https://'
-                                }
-                            ],
-                            onsubmit: function( e ){
-                                var ProducToko = e.data.ProducToko;
-                                var ProducTitle = e.data.ProducTitle;
-                                var ProducOngkir = e.data.ProducOngkir;
-                                var ProducHarga = e.data.ProducHarga;
-                                var ProducLokasi = e.data.ProducLokasi;
-                                var ProducLink = e.data.ProducLink;
-
-                                editor.insertContent('[silo-product toko="'+ProducToko+'" title="'+ProducTitle+'" ongkir="'+ProducOngkir+'" harga="'+ProducHarga+'" lokasi="'+ProducLokasi+'" link="'+ProducLink+'"]');
-                            }
-                        });
-                    }
-                }, // End ShortCode Product
-
                 {
                     // Ads Code -------------------
                     // ----------------------------
-                    text: '  ADS',
-                    icon: 'icon ads_mce',
+                    text: 'ADS',
                     menu: [
                         {
                             text: '  Ads 1',
@@ -201,114 +81,121 @@
                 {
                     // Table Of Content -------------------
                     // ------------------------------------
-                    text: '  TOC',
-                    icon: 'icon toc_mce',
+                    text: 'TOC',
                     onclick: function(){
                         editor.insertContent('[silo_toc]');
                     }
                 }, // End TOC
 
+                // Faqs
                 {
-                    // Add iframe Youtube Video Embed
-                    text: ' Embed Video',
-                    icon: 'icon video_mce',
+                    text: 'FAQs',
+                    icon: 'icon faq_silo_icon',
                     onclick: function(){
-                        editor.windowManager.open({
-                            title: 'Add Youtube Embed Video',
-                            body: [
-                                {
-                                    type: 'textbox',
-                                    name: 'judulVideo',
-                                    label: 'Judul Video',
-                                    minWidth: 380,
-                                    value: 'Video '
-                                },
 
-                                {
+                        var bodyFaqs = [];
+
+                        editor.windowManager.open({
+                            title: 'Shortcode FAQs',
+                            body: [
+                                { // Judul Faqs -------------
                                     type: 'textbox',
-                                    name: 'urlVideoYoutube',
-                                    label: 'url Video',
-                                    value: 'https://'
+                                    name: 'judulFaq',
+                                    label: 'Judul FAQs',
+                                    minWidth: 380,
+                                    value: 'FAQs'
+                                }, { // Paragraf Pembuka --------
+                                    type: 'textbox',
+                                    name: 'paragrafFaq',
+                                    label: 'Kalimat Pembuka',
+                                    value: '',
+                                    multiline: true,
+                                    minHeight: 80,
+                                    placeholder: 'Paragraf pembuka untuk faq...'
+                                }, { // Isi Faqs ---------------
+                                    type: 'textbox',
+                                    name: 'isiFaqs',
+                                    label: 'Isi Faqs',
+                                    value: '',
+                                    multiline: true,
+                                    minHeight: 80,
+                                    placeholder: 'Kosongkan saja...'
+                                }, { // Pertanyaan ---------------
+                                    type: 'textbox',
+                                    name: 'faqTanya',
+                                    label: 'Pertanyaan',
+                                    value: '',
+                                }, { // Jawaban ------------------
+                                    type: 'textbox',
+                                    name: 'faqJawab',
+                                    label: 'Jawaban',
+                                    value: '',
+                                    multiline: true,
+                                    minHeight: 80
+                                }, {
+                                    type: 'button',
+                                    text: 'Push Item',
+                                    maxWidth: 80,
+                                    onclick: function(){
+                                        var Tanya = editor.windowManager.getWindows()[0].find('#faqTanya').value();
+                                        var Jawab = editor.windowManager.getWindows()[0].find('#faqJawab').value();
+
+                                        if( Tanya && Jawab ){
+                                            var bodyFaq = '<p>[question]'+ Tanya +'[/question]</p>\n<p>[answer]'+ Jawab +'[/answer]</p>\n';
+                                            bodyFaqs.push( bodyFaq );
+
+                                            var faqTextarea = editor.windowManager.getWindows()[0].find('#isiFaqs');
+                                            faqTextarea.value( bodyFaqs.join('\n') );
+
+                                            // Mengosongkan Isi Faq Item sebelumnya
+                                            editor.windowManager.getWindows()[0].find('#faqTanya').value('');
+                                            editor.windowManager.getWindows()[0].find('#faqJawab').value('');
+                                        }
+                                    }
                                 }
                             ], onsubmit: function( e ){
-                                var JudulVideo = e.data.judulVideo;
-                                var urlVideo = e.data.urlVideoYoutube;
+                                var jFaqs = e.data.judulFaq;
+                                var pFaqs = e.data.paragrafFaq;
+                                var cFaqs = e.data.isiFaqs;
 
-                                editor.insertContent('[silo-embed judul="'+ JudulVideo +'" url="'+ urlVideo +'"]');
+                                var faqPush = '<p>[sl-faq judul="'+ jFaqs +'" textfaq="'+ pFaqs +'"]</p>'+ cFaqs +'<p>[/sl-faq]</p>';
+                                editor.insertContent( faqPush );
                             }
-                        })
+                        });
                     }
                 },
 
-                // FAQ Help
+                // Youtube Embed
                 {
-                    text: 'FAQ',
-                    icon: 'icon faq_silo_icon',
-                    onclick: function () {
-                        var faqItems = [];
-                
-                        function updatePopupContent() {
-                            var popupBody = [
+                    text: 'Youtube Embed',
+                    onclick: function(){
+                        editor.windowManager.open({
+                            title: 'Youtube Embed Video',
+                            body: [
                                 {
                                     type: 'textbox',
-                                    name: 'question',
-                                    label: 'Question',
-                                    minWidth: 380,
-                                    value: ''
-                                },
-                                {
+                                    name: 'ytTitle',
+                                    label: 'Judul Video',
+                                    value: '',
+                                    palceholder: 'Kosongkan jika tidak ada..',
+                                    minWidth: 380
+                                }, {
                                     type: 'textbox',
-                                    name: 'answer',
-                                    label: 'Answer',
-                                    multiline: true,
-                                    minHeight: 100,
-                                    value: ''
-                                },
-                                {
-                                    type: 'button',
-                                    name: 'add',
-                                    text: 'Add Item',
-                                    onclick: function () {
-                                        var question = editor.windowManager.getWindows()[0].find('#question').value();
-                                        var answer = editor.windowManager.getWindows()[0].find('#answer').value();
-                
-                                        if (question && answer) {
-                                            var faqItem = '[faq_q]' + question + '[/faq_q][faq_a]' + answer + '[/faq_a]';
-                                            faqItems.push(faqItem);
-                
-                                            // Perbarui faqContent saat menambahkan item baru.
-                                            var faqContentTextarea = editor.windowManager.getWindows()[0].find('#faqContent');
-                                            faqContentTextarea.value(faqItems.join('\n'));
-                                            editor.windowManager.getWindows()[0].find('#question').value('');
-                                            editor.windowManager.getWindows()[0].find('#answer').value('');
-                                        }
-                                    }
-                                },
-                                {
-                                    type: 'textbox',
-                                    name: 'faqContent',
-                                    label: 'FAQ Content',
-                                    minWidth: 380,
-                                    minHeight: 100,
-                                    multiline: true,
-                                    value: ''
+                                    name: 'ytVideo',
+                                    label: 'Video ID',
+                                    value: '',
+                                    palceholder: 'ID Video Youtube..'
                                 }
-                            ];
-                
-                            editor.windowManager.open({
-                                title: 'FAQ',
-                                body: popupBody,
-                                onsubmit: function (e) {
-                                    var faqContent = '[silo_faq]' + faqItems.join('') + '[/silo_faq]';
-                                    editor.insertContent(faqContent);
-                                }
-                            });
-                        }
-                
-                        updatePopupContent();
+                            ], onsubmit: function( e ){
+                                var ytTitle = e.data.ytTitle;
+                                var ytVideo = e.data.ytVideo;
+                                var ytInserContent = '[sl-yt judul="'+ytTitle+'" videoid="'+ytVideo+'"]';
+
+                                editor.insertContent( ytInserContent );
+                            }
+                        });
                     }
                 }
-                
             ]
         });
     });

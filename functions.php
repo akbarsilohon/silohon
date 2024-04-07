@@ -31,5 +31,5 @@ require SILO_DIR . '/function/data-schema.php';
 
 // Add Custom Post Type Spek -------------------
 // ---------------------------------------------
-require SILO_DIR . '/spek/run.php';
-require SILO_DIR . '/spek/meta-box.php';
+// require SILO_DIR . '/spek/run.php';
+// require SILO_DIR . '/spek/meta-box.php';
