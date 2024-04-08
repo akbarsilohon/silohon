@@ -98,3 +98,29 @@
     height: 40px;
     padding: 2px 10px;
 }
+
+.silo_form input.org,
+.silo_form input.sameas-input{
+    width: calc(100% - 40px);
+    max-width: 400px;
+    margin-bottom: 10px;
+}
+.silo_form .remove-sameas {
+    background-color: #ff4d4d; /* Warna merah untuk tombol hapus */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.silo_form #add-sameas {
+    background-color: #66cc66; /* Warna hijau untuk tombol tambah */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Tambahkan jarak antara tombol tambah dengan input pertama */
+}

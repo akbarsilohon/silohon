@@ -124,7 +124,7 @@ article.silo_article {
 
 .article_top .single_img {
     width: 100%;
-    height: 400px
+    height: 100%
 }
 
 .post-navigation,
@@ -686,8 +686,8 @@ form.sil_search button {
 
     .article_top .single_img {
         width: calc(100% + 40px);
+        height: 100%;
         margin-left: -20px;
-        height: 400px;
         object-position: center;
         object-fit: cover
     }
@@ -839,7 +839,7 @@ form.sil_search button {
     }
 
     .article_top .single_img {
-        height: 280px
+        height: 100%
     }
 
     .the_content ol,

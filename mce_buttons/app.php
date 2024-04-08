@@ -328,7 +328,7 @@ function callback_sl_yt( $atts ){
                     style="position: absolute;top: 0;left: 0;width: 100%;height: 100%; border: 0;"
                     loading="lazy"
                     srcdoc="<style>
-                        *{padding:0;margin:0;overflow:hidden}body,html{height:100%}img{position:absolute;width:100%;height:auto;top:0;bottom:0;margin:auto}svg{filter:drop-shadow(1px 1px 6px hsl(206.5, 70.7%, 8%));transition:250ms ease-in-out}body:hover svg{filter:drop-shadow(1px 1px 6px hsl(206.5, 0%, 10%););transform:scale(1.1)}svg {
+                        *{padding:0;margin:0;overflow:hidden}body,html{height:100%}img{position:absolute;width:100%;height:auto;top:0;bottom:0;margin:auto}svg{filter:drop-shadow(1px 1px 6px hsl(206.5, 70.7%, 8%));transition:250ms ease-in-out}body:hover svg{filter:drop-shadow(1px 1px 6px hsl(206.5, 0%, 10%);)}svg {
                             position: absolute;
                             width: 50px;
                             height: auto;
@@ -360,13 +360,14 @@ function callback_sl_yt( $atts ){
         $shortCodeYt .= '</div>';
         $shortCodeYt .= '</div>';
 
+        $upload_date = get_the_date('c');
         $shortCodeYt .= '<script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": "VideoObject",
                 "name": "'. $judulVideo .'",
                 "description": "Silahkan tonton video tentang '. $judulVideo .'",
-                "uploadDate": "' . get_the_date() . '",
+                "uploadDate": "' . $upload_date . '",
                 "thumbnailUrl": "https://i.ytimg.com/vi_webp/'. $videID .'/hqdefault.webp",
                 "contentUrl": "https://www.youtube.com/embed/' . $videID . '",
                 "embedUrl": "https://www.youtube.com/embed/' . $videID . '"

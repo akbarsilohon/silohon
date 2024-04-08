@@ -85,37 +85,3 @@ function silo_related_post_count(){
 $rel_val = ( !empty( get_option('related_post_count') ) ? get_option('related_post_count') : 4 ) ?>
 <input type="number" name="related_post_count" id="related_post_count" value="<?php echo $rel_val; ?>">
 <?php }
-
-// Scheme SEO Meta --------------------------
-// -----------------------------------------
-add_settings_section( 'for-schema', 'Schema Meta', null, 'post_setting' );
-
-// Authro Scheme
-register_setting( 'silo-post-group', 's_au' );
-add_settings_field(
-    's-author',
-    'Author',
-    's_author',
-    'post_setting', 
-    'for-schema'
-); function s_author(){ ?>
-    <div id="s_aut" class="s_aut <?php if( get_option('s_au') != 'true') echo 'disabled'; ?>">
-        <input <?php if( get_option('s_au') == 'true') echo 'checked'; ?> value="true" type="checkbox" name="s_au" id="s_au">
-    </div>
-<?php
-}
-
-// Date Published
-register_setting( 'silo-post-group', 's_date' );
-add_settings_field( 
-    's-date', 
-    'Date Schema', 
-    'date_schema', 
-    'post_setting', 
-    'for-schema'
-); function date_schema(){ ?>
-    <div id="s_dat" class="s_dat <?php if( get_option('s_date') != 'true') echo 'disabled'; ?>">
-        <input <?php if( get_option('s_date') == 'true') echo 'checked'; ?> value="true" type="checkbox" name="s_date" id="s_date">
-    </div>
-<?php
-}

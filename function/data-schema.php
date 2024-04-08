@@ -7,51 +7,45 @@ if($OrganizationSchema == 'true'){
 }
 
 // Call v2_add_organization_json_head
-function v2_add_organization_json_head(){
-    // context
-    $organization = get_option('organization_name');
-    $organizationLogo = get_option('organization_image');
-    $organizationDesc = get_option('organization_desc');
+function v2_add_organization_json_head(){ ?>
 
-    // address
-    $streetAddress = get_option('organization_address');
-    $addressLocality = get_option('organization_city');
-    $addressRegion = get_option('organization_region');
-    $postalCode = get_option('organization_postalCode');
-    $addressCountry = get_option('organization_country');
-
-    // contactPoint
-    $telephone = get_option('organization_telephone');
-    $email = get_option('organization_email');
-    $contactType = 'Admin';
-
-    echo '
-        <script type="application/ld+json">
-            {
-                "@context": "http://schema.org",
-                "@type": "Organization",
-                "name": "'. $organization .'",
-                "url": "'. get_bloginfo('url') .'",
-                "logo": "'. $organizationLogo .'",
-                "description": "'. $organizationDesc .'",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "'. $streetAddress .'",
-                    "addressLocality": "'. $addressLocality .'",
-                    "addressRegion": "'. $addressRegion .'",
-                    "postalCode": "'. $postalCode .'",
-                    "addressCountry": "'. $addressCountry .'"
-                },
-                "contactPoint": {
-                    "@type": "ContactPoint",
-                    "telephone": "'. $telephone .'",
-                    "email": "'. $email .'",
-                    "contactType": "'. $contactType .'"
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "<?php echo get_option('nama_og'); ?>",
+        "url": "<?php echo get_option('web_og'); ?>",
+        "sameAs": [ <?php
+                $sameAs = get_option('sameas_og');
+                if (!empty($sameAs)) {
+                    $sameAsCount = count($sameAs);
+                    foreach ($sameAs as $index => $url) {
+                        echo '"' . esc_url($url) . '"';
+                        if ($index !== $sameAsCount - 1) {
+                            echo ',';
+                        }
+                    }
                 }
-            }
-        </script>
-    ';
+            ?> ],
+        "image": "<?php echo get_option('gambar_og'); ?>",
+        "logo": "<?php echo get_option('logo_og') ?>",
+        "description": "<?php echo get_option('tt_og') ?>",
+        "email": "<?php echo get_option('email_og') ?>",
+        "telephone": "<?php echo get_option('phone_og') ?>",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "<?php echo get_option('alamat_og') ?>",
+            "addressLocality": "<?php echo get_option('kota_og') ?>",
+            "addressCountry": "<?php echo get_option('ngr_og') ?>",
+            "addressRegion": "<?php echo get_option('prov_og') ?>",
+            "postalCode": "<?php echo get_option('pos_og') ?>"
+        },
+        "vatID": "<?php echo get_option('vat_og'); ?>",
+        "iso6523Code": "<?php echo get_option('iso_og'); ?>"
+    }
+</script>
 
+<?php
 }
 
 

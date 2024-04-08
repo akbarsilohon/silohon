@@ -1,3 +1,13 @@
+<?php 
+/**
+ * Header File
+ * Silohon Wordpress Theme
+ * @package silohon
+ * @link https://github.com/akbarsilohon/silohon.git
+ */
+
+?>
+
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -5,30 +15,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-    <style>
-        :root {
-            --link: #000;
-            --hover: #d56340;
-            --bl1: #313131;
-            --bl2: #444444;
-            --bl3: #535353;
-            --bl4: #636363;
-            --bl5: #727272;
-            --pt1: #fff;
-            --pt2: #f3f3f3;
-            --pt3: #e0dddd;
-            --pt4: #cecbcb;
-            --pt5: #b9b9b9
-        }
-    </style>
+    <style>:root { --link: #000; --hover: #d56340; --bl1: #313131; --bl2: #444444; --bl3: #535353; --bl4: #636363; --bl5: #727272; --pt1: #fff; --pt2: #f3f3f3; --pt3: #e0dddd; --pt4: #cecbcb; --pt5: #b9b9b9}</style>
     <?php
-        if( ! is_admin() ){
-            $kodeHeader = get_option( 'insert_header' );
-            if( !empty( $kodeHeader ) ){
-                print( $kodeHeader );
-            }
+        $kodeHeader = get_option( 'insert_header' );
+        if( !empty( $kodeHeader ) ){
+            print( $kodeHeader );
         }
-    wp_head();
+        wp_head();
     ?>
 
         <?php
@@ -38,22 +31,11 @@
 		?>
 	<link rel='dns-prefetch' href='<?php echo $protocol_removed_url; ?>' />
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> itemtype="https://schema.org/Blog" itemscope>
 <?php if(function_exists('wp_body_open')) : wp_body_open(); endif; ?>
-<noscript>
-    <style>
-        header.silo_header,
-        .silo_flex,
-        .container,
-        footer{
-            display: none;
-        }
-    </style>
-    <h1>Ada Kesalahan</h1>
-    <p>Aktifkan JavaScript Browser untuk menampilkan konten</p>
-</noscript>
+
 <!-- Main Header -->
-<header class="silo_header">
+<header class="silo_header" itemtype="https://schema.org/WPHeader" itemscope>
     <div class="headers container">
         <!-- Header Lef -->
         <div id="header_left" class="header_left">
@@ -69,21 +51,17 @@
                     <?php 
                         $defLogo = SILO_URI . '/img/logo.png';
                         $atr = 'itemprop="logo" class="silo_logo" width="80" height="60"';
-                        $logo = get_option('silo_logo');
-
-                        if( !empty( $logo )){
-                            echo '<img '.$atr.' src="'.$logo.'" alt="'.get_bloginfo('name').'" />';
-                        } else{
-                            echo '<img '.$atr.' src="'.$defLogo.'" alt="'.get_bloginfo('name').'" />';
-                        }
+                        $logo = !empty(get_option('silo_logo')) ? get_option('silo_logo') : $defLogo;
+                        echo '<img '.$atr.' src="'.$logo.'" alt="'.get_bloginfo('name').'">';
                     ?>
                 </a>
             </div>
 
             <?php wp_nav_menu( array(
-                'theme_location' => 'header',
-                'container' => 'ul',
-                'menu_class' => 'big_menu',
+                'theme_location'        =>  'header',
+                'container'             =>  'ul',
+                'menu_class'            =>  'big_menu',
+                'fallback_cb'           =>  false
             )); ?>
         </div>
 

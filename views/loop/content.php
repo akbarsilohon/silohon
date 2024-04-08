@@ -1,6 +1,6 @@
 <div class="container silo_looping">
     <div class="looping">
-        <div class="loop_title">
+        <div class="loop_title" style="margin-bottom:1rem;">
             <span class="__title">Blog Post</span>
         </div>
 
